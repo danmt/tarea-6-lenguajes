@@ -33,3 +33,21 @@ class Vector2
     return Vector2.new(-@x, -@y)
   end
 end
+
+class Complejo < Vector2
+  def initialize(x, y = 0)
+    super(x, y)
+  end
+
+  def to_s()
+    if (@x == 0) 
+      return "#{@y}i"
+    elsif (@y == 0) 
+      return "#{@x}"
+    elsif (@y > 0)
+      return "#{@x}+#{@y}i"
+    else
+      return "#{@x}#{@y}i"
+    end
+  end
+end
