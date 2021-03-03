@@ -12,4 +12,24 @@ class Vector2
   def to_s()
     return "(#{@x},#{@y})"
   end
+
+  def +(vector)
+    return Vector2.new(@x + vector.x, @y + vector.y)
+  end
+
+  def -(vector)
+    return Vector2.new(@x - vector.x, @y - vector.y)
+  end
+
+  def ==(vector)
+    return @x == vector.x && @y == vector.y
+  end
+
+  def *(vector)
+    return @x * vector.x + @y * vector.y
+  end
+
+  def -@
+    return Vector2.new(-@x, -@y)
+  end
 end
