@@ -78,67 +78,63 @@ class Complejo < Vector2
 end
 
 class Complejo2
-  attr_accessor :x, :y
+  attr_accessor :vector
 
   def initialize(x, y = 0)
-    @x, @y = x, y
+    @vector = Vector2.new(x, y)
   end
 
   def to_s()
-    if (@x == 0) 
-      return "#{@y}i"
-    elsif (@y == 0) 
-      return "#{@x}"
-    elsif (@y > 0)
-      return "#{@x}+#{@y}i"
+    if (@vector.x == 0) 
+      return "#{@vector.y}i"
+    elsif (@vector.y == 0) 
+      return "#{@vector.x}"
+    elsif (@vector.y > 0)
+      return "#{@vector.x}+#{@vector.y}i"
     else
-      return "#{@x}#{@y}i"
+      return "#{@vector.x}#{@vector.y}i"
     end
   end
 
   def magnitud() 
-    return Math.sqrt((@x ** 2) + (@y ** 2))
+    return @vector.magnitud()
   end
 
   def +(complejo)
-    return Complejo.new(@x + complejo.x, @y + complejo.y)
+    return @vector + complejo.vector
   end
 
   def -(complejo)
-    return Complejo.new(@x - complejo.x, @y - complejo.y)
+    return @vector - complejo.vector
   end
 
   def ==(complejo)
-    return @x == complejo.x && @y == complejo.y
-  end
-
-  def *(complejo)
-    return @x * complejo.x + @y * complejo.y
+    return @vector == complejo.vector
   end
 
   def *(complejo)
     return Complejo.new(
-      (@x * complejo.x) - (@y * complejo.y),   
-      (@x * complejo.y) + (@y * complejo.x)
+      (@vector.x * complejo.vector.x) - (@vector.y * complejo.vector.y),   
+      (@vector.x * complejo.vector.y) + (@vector.y * complejo.vector.x)
     )
   end
 
   def -@
-    return Complejo.new(-@x, -@y)
+    return -@vector
   end
 
   def ~@
-    return Complejo.new(@x, -@y)
+    return Complejo.new(@vector.x, -@vector.y)
   end
 
   def /(complejo) 
     begin
-      if (complejo.x == 0.0) && (complejo.y == 0.0)
+      if (complejo.vector.x == 0.0) && (complejo.vector.y == 0.0)
         raise ZeroDivisionError end
 
       return Complejo.new(
-        (@x * complejo.x + @y * complejo.y) / (complejo.x ** 2 + complejo.y ** 2),   
-        (@y * complejo.x - @x * complejo.y) / (complejo.x ** 2 + complejo.y ** 2)
+        (@vector.x * complejo.vector.x + @vector.y * complejo.vector.y) / (complejo.vector.x ** 2 + complejo.vector.y ** 2),   
+        (@vector.y * complejo.vector.x - @vector.x * complejo.vector.y) / (complejo.vector.x ** 2 + complejo.vector.y ** 2)
       )
     rescue ZeroDivisionError
       puts "No se puede dividir entre 0"
