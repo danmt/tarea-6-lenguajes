@@ -96,11 +96,35 @@ class Complejo2
     end
   end
 
+  def magnitud() 
+    return Math.sqrt((@x ** 2) + (@y ** 2))
+  end
+
+  def +(complejo)
+    return Complejo.new(@x + complejo.x, @y + complejo.y)
+  end
+
+  def -(complejo)
+    return Complejo.new(@x - complejo.x, @y - complejo.y)
+  end
+
+  def ==(complejo)
+    return @x == complejo.x && @y == complejo.y
+  end
+
+  def *(complejo)
+    return @x * complejo.x + @y * complejo.y
+  end
+
   def *(complejo)
     return Complejo.new(
       (@x * complejo.x) - (@y * complejo.y),   
       (@x * complejo.y) + (@y * complejo.x)
     )
+  end
+
+  def -@
+    return Complejo.new(-@x, -@y)
   end
 
   def ~@
@@ -121,22 +145,3 @@ class Complejo2
     end
   end
 end
-
-
-complejo1 = Complejo.new(3,2) * Complejo.new(1,7)
-complejo2 = Complejo.new(3,2) / Complejo.new(0);
-complejo3 = Complejo.new(3.0,2.0) / Complejo.new(1.0,-2.0);
-complejo4 = Complejo.new(3,2) / Complejo.new(0.0);
-
-puts complejo1
-puts ~complejo1
-puts complejo3
-
-complejo1 = Complejo2.new(3,2) * Complejo2.new(1,7)
-complejo2 = Complejo2.new(3,2) / Complejo2.new(0);
-complejo3 = Complejo2.new(3.0,2.0) / Complejo2.new(1.0,-2.0);
-complejo4 = Complejo2.new(3,2) / Complejo2.new(0.0);
-
-puts complejo1
-puts ~complejo1
-puts complejo3
