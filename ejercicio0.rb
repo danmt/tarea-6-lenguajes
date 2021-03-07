@@ -76,3 +76,68 @@ class Complejo < Vector2
     end
   end
 end
+
+class Complejo2
+  attr_accessor :vector
+
+  def initialize(x, y = 0)
+    @vector = Vector2.new(x, y)
+  end
+
+  def to_s()
+    if (@vector.x == 0) 
+      return "#{@vector.y}i"
+    elsif (@vector.y == 0) 
+      return "#{@vector.x}"
+    elsif (@vector.y > 0)
+      return "#{@vector.x}+#{@vector.y}i"
+    else
+      return "#{@vector.x}#{@vector.y}i"
+    end
+  end
+
+  def magnitud() 
+    return @vector.magnitud()
+  end
+
+  def +(complejo)
+    return @vector + complejo.vector
+  end
+
+  def -(complejo)
+    return @vector - complejo.vector
+  end
+
+  def ==(complejo)
+    return @vector == complejo.vector
+  end
+
+  def *(complejo)
+    return Complejo.new(
+      (@vector.x * complejo.vector.x) - (@vector.y * complejo.vector.y),   
+      (@vector.x * complejo.vector.y) + (@vector.y * complejo.vector.x)
+    )
+  end
+
+  def -@
+    return -@vector
+  end
+
+  def ~@
+    return Complejo.new(@vector.x, -@vector.y)
+  end
+
+  def /(complejo) 
+    begin
+      if (complejo.vector.x == 0.0) && (complejo.vector.y == 0.0)
+        raise ZeroDivisionError end
+
+      return Complejo.new(
+        (@vector.x * complejo.vector.x + @vector.y * complejo.vector.y) / (complejo.vector.x ** 2 + complejo.vector.y ** 2),   
+        (@vector.y * complejo.vector.x - @vector.x * complejo.vector.y) / (complejo.vector.x ** 2 + complejo.vector.y ** 2)
+      )
+    rescue ZeroDivisionError
+      puts "No se puede dividir entre 0"
+    end
+  end
+end
