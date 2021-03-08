@@ -1,6 +1,6 @@
 # Tarea 6 de Lenguajes
 
-- Denylson Romero 13-
+- Denylson Romero 13-11270
 - Daniel Marin 10-10419
 
 ## Ejercicio 0.
@@ -170,3 +170,9 @@ Teniendo tantas similitudes entre ambas clases, reducimos considerablemente la c
 En el caso de esta implementacion de Complejo usando Composición, re-usamos los metodos de Vector2, una mejor solucion incluiria una nueva clase "Operaciones", que cuenta con una serie de metodos para realizar la aritmetica. Usando la clase Operaciones, podemos componer Vector2 y Complejo usando esta nueva clase, resultando en un codigo un poco mas mantenible.
 
 ## Ejercicio 1
+
+Un lenguaje puramente funcional puede ser definido como un lenguaje donde no se permiten los cambios de estado ni datos mutables. Tomando esta definición en cuenta, estrictamente hablando, no tiene sentido un lenguaje puramente funcional orientado a objetos, ya que la orientación a objetos permite la mutabilidad de los datos, lo cuál contradice la definición de un lenguaje puramente funcional.
+
+Además, la programación funcional sigue un modelo declarativo que se enfoca en “qué haces en el programa”, mientras la programación orientada a objetos sigue un modelo imperativo, donde el enfoque es “cómo haces el programa”.
+
+También cabe destacar que la programación puramente funcional permite paralelismo, mientras la programación orientada a objetos no lo permite nativamente, sino que necesita hacer uso de otros paradigmas para poder lograr el paralelismo, como openMP y MPI.
